@@ -1,5 +1,5 @@
 ---
-title: Storing Multiple Values in Lists
+title: Storing Multiple Values in Lists and Dictionaries
 teaching: 30
 exercises: 0
 questions:
@@ -11,6 +11,8 @@ objectives:
 - "Append values to an existing list"
 - "Reorder and slice list elements"
 - "Create and manipulate nested lists"
+- "Explain what a dictionary is."
+- "Compare lists and dictionaries." 
 keypoints:
 - "`[value1, value2, value3, ...]` creates a list."
 - "Lists can contain any Python object, including lists (i.e., list of lists)."
@@ -18,6 +20,8 @@ keypoints:
 list[2:9]), in the same way as strings and arrays."
 - "Lists are mutable (i.e., their values can be changed in place)."
 - "Strings are immutable (i.e., the characters in them cannot be changed)."
+- "A dictionary is a data structure that is used to look-up a value given an associated key."
+
 ---
 
 Just as a `for` loop is a way to do operations many times,
@@ -533,3 +537,87 @@ Omitting ending index: ["sep", "oct", "nov", "dec"]
 {: .challenge}
 
 {% include links.md %}
+
+
+## Dictionaries
+Dictionaries (also called dicts) are another key data structure we can use to store data. In particular, dicts allow efficient storage of key-value pairs of any type of data.
+
+To create a dict, we use code like the following:
+```python
+example = {}
+type(example)
+```
+
+```
+dict
+```
+{: .output}
+
+We can then store values in our dict using indexing.
+The index is referred to as the "key",
+and the stored data is referred to as the "value".
+
+```python
+example['key'] = 'value'
+example['key']
+```
+
+```
+'value'
+```
+{: .output}
+
+In addition, keys can be stored using any type of value.
+Let's add several more values to demonstrate this.
+
+```python
+example[1] = 2
+example[4] = False
+example['test'] = 5
+example[7] = 9
+```
+
+
+To retrieve all keys in the dictionary, we can use the `.keys()`method.
+Note how we used the `list()` function to turn our resulting output into a list.
+
+```python
+list(example.keys())
+```
+
+```
+['key', 1, 4, 'test', 7]
+```
+{: .output}
+
+Likewise, we can retrieve all the values at once, using `.values()`
+
+```python
+list(example.values())
+```
+
+```
+['value', 2, False, 5, 9]
+```
+{: .output}
+
+> ## Dictionary order
+> Note that the order of keys and values in a dictionary should not be relied upon.
+> We'll create dictionary another way to demonstrate this:
+> 
+> ```python
+> unordered = {'a': 1, 
+>              'b': 2,
+>              'c': 3,
+>              'd': 4}
+> ```
+> 
+> ```
+> {'a': 1, 'b': 2, 'c': 3, 'd': 4}
+> ```
+> {: .output}
+> 
+> Depending on your version of Python, the dictionary will either be in order, or out of order. 
+> If you are on Python 3.6+ dictionaries are ordered.
+> This is a new feature [and should not be relied upon](https://mail.python.org/pipermail/python-dev/2016-September/146348.html). 
+{: .callout}
